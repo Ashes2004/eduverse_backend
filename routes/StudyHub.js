@@ -4,6 +4,7 @@ const router = express.Router();
 const apiKey = process.env.GEMINI_API_KEY ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
+
 router.post("/studyhub", async (req, res) => {
   console.log("API key: ", apiKey);
   const { message } = req.body;
