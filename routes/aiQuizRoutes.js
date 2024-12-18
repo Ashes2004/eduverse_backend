@@ -1,7 +1,7 @@
 import express from "express";
 import {GoogleGenerativeAI} from '@google/generative-ai';
 const router = express.Router();
-const apiKey =  "AIzaSyC8DRMNqnHAm7Y1H78O2A56TjIDtBn_hlg";
+const apiKey = process.env.GEMINI_API_KEY ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 router.post('/aiquiz', async (req, res) => {

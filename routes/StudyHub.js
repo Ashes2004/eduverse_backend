@@ -1,7 +1,7 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const router = express.Router();
-const apiKey = "AIzaSyAYLbzEmvNdTowHa27PwhPHkonzSoRU5cM";
+const apiKey = process.env.GEMINI_API_KEY ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 router.post("/studyhub", async (req, res) => {
