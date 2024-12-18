@@ -42,7 +42,7 @@ Ensure you have the following installed:
 4. Create a `.env` file in the root directory and add the following environment variables:
    ```env
    PORT=3001
-   MONGO_URI='mongodb://localhost:27017/eduverse'
+   MONGO_URI=''
    GEMINI_API_KEY=''
    ```
 
