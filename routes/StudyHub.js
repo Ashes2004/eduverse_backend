@@ -1,7 +1,9 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const router = express.Router();
-const apiKey = process.env.GEMINI_API_KEY ;
+import { configDotenv } from 'dotenv';
+configDotenv();
+const apiKey = process.env.GEMINI_API_KEY  ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 
@@ -10,7 +12,7 @@ router.post("/studyhub", async (req, res) => {
   const { message } = req.body;
 
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash",
     systemInstruction: `
       You are an intelligent e-library assistant. Your role is to provide personalized educational content based on the student's class, study level, and weak topics. Your response should be in a structured JSON format that includes the following:
   
@@ -87,6 +89,8 @@ router.post("/studyhub", async (req, res) => {
 
   try {
     const result = await chatSession.sendMessage(message);
+    console.log(result.response.text());
+    
     const response = JSON.parse(result.response.text());
     res.json(response);
   } catch (error) {

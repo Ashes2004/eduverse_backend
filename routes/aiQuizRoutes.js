@@ -1,6 +1,9 @@
 import express from "express";
 import {GoogleGenerativeAI} from '@google/generative-ai';
 const router = express.Router();
+
+import { configDotenv } from 'dotenv';
+configDotenv();
 const apiKey = process.env.GEMINI_API_KEY ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
@@ -10,7 +13,7 @@ router.post('/aiquiz', async (req, res) => {
   
  
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-pro",
+      model: "gemini-1.5-flash",
       systemInstruction: `
         You are an AI that generates quiz JSON objects based on user input. Your response should be in a structured JSON format that includes the following::
   

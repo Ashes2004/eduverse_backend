@@ -1,6 +1,8 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const router = express.Router();
+import { configDotenv } from 'dotenv';
+configDotenv();
 const apiKey = process.env.GEMINI_API_KEY ;
 const genAI = new GoogleGenerativeAI(apiKey);
 
@@ -9,7 +11,7 @@ router.post("/aigoal", async (req, res) => {
   const { message } = req.body;
 
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash",
     systemInstruction: `
        You are an educational assistant specializing in helping students achieve their academic goals. Your task is to create a personalized academic plan for students based on their input, which includes their class name, subjects, and institution rank. 
 
